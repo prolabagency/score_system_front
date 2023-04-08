@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Tilt+Neon&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --body-background: #F5F5F5;
+  --body-font-family: 'Nunito Sans', sans-serif;
+  --accent-background: #FDFDFD;
+  --light-background: #fff;
+  --text-color: #161719;
+  --primary-color: #4188D2;
+  --accent-color: #3EB185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+  background-color: var(--body-background);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  font-weight: 600;
+}
+
+h4 {
+  display: block;
+  font-weight: 600;
+}
+
+h5 {
+  display: block;
+  font-size: .83em;
+  font-weight: 500;
+}
+
+h6 {
+  display: block;
+  font-size: .67em;
+  font-weight: 400;
+}
+
+nav{
+  position: sticky;
+  top: 20px;
+  z-index: 1;
+  background-color: var(--accent-background);
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  padding: 10px 30px;
+  min-height: 72px;
+  margin-bottom: 20px;
+}
+
+select {
+  border-radius: 0;
+  background: url('../img/select.svg') no-repeat 95% 50%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+main{
+  margin-bottom: 20px;
+}
+
+footer{
+  background-color: var(--accent-background);
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  padding: 20px 30px;
+}
+
+.sidebar_flex_item{
+  position: sticky;
+  top: 1.25rem;
+  z-index: 2;
+  width: 20%;
+  max-height: 94vh;
+}
+
+.content_flex_item{
+  width: 80%;
+  padding-left: 20px;
+  min-height: 94vh;
+}
+
+.card_body{
+  background-color: var(--accent-background);
+  padding: 30px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  min-height: calc(94vh - 92px - 84px);
+}
+
+.login_card {
+  width: 500px;
+  background-color: var(--accent-background);
+  padding: 30px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+  box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.4);
+}
+
+.sidebar{
+  background-color: var(--accent-background);
+  padding: 30px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.3);
+  -moz-box-shadow: 0 0 11px -7px rgba(34, 60, 80, 0.3);
+  box-shadow: 0
+  0 11px -7px rgba(34, 60, 80, 0.3);
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.frame {
+  background-color: var(--body-background);
+  width: 100vw;
+  height: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.frame_2 {
+  display: none;
+}
+
+.bx {
+  transform:  translateY(2px);
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar_flex_item {
+    width: 0;
+  }
+
+  .content_flex_item {
+    width: 95%;
+    padding-left: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -200%;
+    min-height: 100vh;
+    width: 300px;
+    border-radius: 0 15px 15px 0;
+    z-index: unset;
+    transition: .8s;
+  }
+
+  .frame_2 {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -200%;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .frame_2.active {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  nav {
+    padding: 13px;
+  }
+
+  .card_body {
+    padding: 20px 13px;
+  }
+
+  .sidebar {
+    width: 80%;
+  }
+
+  .login_card {
+    width: 90%;
+  }
+}
