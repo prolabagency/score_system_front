@@ -27,6 +27,7 @@ const StaffItemCard = ({className, staff, setOpenModalWin, setOptions, ...props}
                             setOptions({
                                 staffId: staff.id,
                                 value: staff.point_as_staff.value,
+                                note: staff.point_as_staff.note,
                                 mode: UPDATE,
                                 pointId: staff.point_as_staff.id,
                                 many: true,

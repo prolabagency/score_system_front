@@ -13,6 +13,7 @@ const CreatePoint = ({options, setOpen}) => {
     const {staffs, setStaff} = useContext(SetStaffContext)
 
     const [value, setValue] = useState(options?.value ?? 0)
+    const [note, setNote] = useState('')
 
     const {postData, errors, isFetching} = usePostData({
         url: '/api/v1/points/',
@@ -33,6 +34,7 @@ const CreatePoint = ({options, setOpen}) => {
             value,
             month,
             year,
+            note,
             head: auth.user.id,
             staff: options.staffId,
         }
@@ -55,15 +57,26 @@ const CreatePoint = ({options, setOpen}) => {
 
     return (
         <form onSubmit={e => handleSubmit(e)}>
-            <div className="flex gap-3 ">
-                <OutlinedInput 
-                    type="number" 
-                    containerClass='grow' 
-                    onChange={e => setValue(e.target.value)} 
-                    value={value} 
-                    errors={errors?.value || []}
-                    min="0"
-                />
+            <div className="flex gap-3">
+                <div className="grow">
+                    <OutlinedInput
+                        type="number"
+                        placeholder="Балл"
+                        containerClass='mb-3'
+                        onChange={e => setValue(e.target.value)}
+                        value={value}
+                        errors={errors?.value || []}
+                        min="0"
+                    />
+                    <OutlinedInput
+                        type="text"
+                        placeholder="Заметка"
+                        onChange={e => setNote(e.target.value)}
+                        value={note}
+                        errors={errors?.note || []}
+                        min="0"
+                    />
+                </div>
                 <AccentLoaderButton isLoading={isFetching} className='sm'>
                     <i className='bx bx-check'></i>
                 </AccentLoaderButton>

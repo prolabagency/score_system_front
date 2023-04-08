@@ -9,6 +9,7 @@ import { refreshProfile } from '../../redux/auth/authSlice'
 const UpdatePoint = ({options, setOpen}) => {
 
     const [value, setValue] = useState(options?.value ?? 0)
+    const [note, setNote] = useState(options?.note ?? '')
 
     const {staffs, setStaff} = useContext(SetStaffContext)
 
@@ -26,7 +27,8 @@ const UpdatePoint = ({options, setOpen}) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const uploadData = {
-            value
+            value,
+            note
         }
         const response = await patchData(uploadData);
  
@@ -50,14 +52,25 @@ const UpdatePoint = ({options, setOpen}) => {
     return (
         <form onSubmit={e => handleSubmit(e)}>
             <div className="flex gap-3 ">
-                <OutlinedInput
-                    type="number" 
-                    containerClass='grow' 
-                    onChange={e => setValue(e.target.value)} 
-                    value={value} 
-                    errors={errors?.value || []}
-                    min="0"
-                />
+                <div className="grow">
+                    <OutlinedInput
+                        type="number"
+                        placeholder="Балл"
+                        containerClass='mb-3'
+                        onChange={e => setValue(e.target.value)}
+                        value={value}
+                        errors={errors?.value || []}
+                        min="0"
+                    />
+                    <OutlinedInput
+                        type="text"
+                        placeholder="Заметка"
+                        onChange={e => setNote(e.target.value)}
+                        value={note}
+                        errors={errors?.note || []}
+                        min="0"
+                    />
+                </div>
                 <AccentLoaderButton isLoading={isFetching} className='sm'>
                     <i className='bx bx-check'></i>
                 </AccentLoaderButton>
