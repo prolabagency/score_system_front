@@ -10,7 +10,7 @@ import TableOfPoints from "./TableOfPoints.jsx";
 import TableOfAveragePoint from "./TableOfAveragePoint.jsx";
 import EmptyCard from "@/components/utils/EmptyCard.jsx";
 
-const TabOfPoints = ({className = '', points}) => {
+const TabOfPoints = ({className = '', useCurrentUserId = false, points}) => {
 
     const [value, setValue] = React.useState('1');
 
@@ -34,7 +34,7 @@ const TabOfPoints = ({className = '', points}) => {
                     <PaginationButton manager={points} />
                 </TabPanel>
                 <TabPanel value="2" style={{padding: 0}}>
-                    <TableOfAveragePoint useCurrentUserId={true} />
+                    <TableOfAveragePoint useCurrentUserId={useCurrentUserId} />
                 </TabPanel>
             </TabContext>
         </Box>

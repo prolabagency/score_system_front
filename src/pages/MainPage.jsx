@@ -46,7 +46,7 @@ const MainPage = () => {
 
             { points.isFetching
                 ? <Loader />
-                : <TabOfPoints points={points} />
+                : <TabOfPoints useCurrentUserId={true} points={points} />
             }
         </>
     );
