@@ -129,15 +129,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
     font-size: 3rem;
     color: #fff;
+    cursor: pointer;
     transition: .3s;
 }
 
-.upload_avatar:hover label {
-    opacity: 1;
-}
 
 .primary_button {
     display: inline-block;

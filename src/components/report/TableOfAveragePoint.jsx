@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {MonthManager} from "../../utils/MonthManager.js";
+import {MonthManager} from "@/utils/MonthManager.js";
 import useGetData from "../../hooks/useGetData.js";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import FilterOfAveragePoints from "./FilterOfAveragePoints.jsx";
+import PointIndicator from "@/components/ui/PointIndicator.jsx";
 
 const TableOfAveragePoint = ({className, useCurrentUserId = false, ...props}) => {
 
@@ -41,7 +42,9 @@ const TableOfAveragePoint = ({className, useCurrentUserId = false, ...props}) =>
                     <tr key={idx}>
                         <td data-label="Год">{item.year}</td>
                         <td data-label="Месяц">{monthManager.get(item.month)}</td>
-                        <td data-label="Балл">{item.value}</td>
+                        <td data-label="Балл">
+                            <PointIndicator isSatisfied={item.is_satisfied}>{item.value}</PointIndicator>
+                        </td>
                     </tr>
                 )}
                 </tbody>

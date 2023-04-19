@@ -50,7 +50,6 @@ const CreatePoint = ({options, setOpen}) => {
             else {
                 setStaff({...staffs, point_as_staff: response}) 
             }
-            dispatch(refreshProfile(auth.user))
             setOpen(false)
         }
     }

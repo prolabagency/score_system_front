@@ -42,10 +42,10 @@ const StaffDetailPage = () => {
         usePagination: true,
     })
 
-    useEffect(() => {
-        points.setParams({})
-        // eslint-disable-next-line
-    }, [staff.data])
+    // useEffect(() => {
+    //     points.setParams({})
+    //     // eslint-disable-next-line
+    // }, [staff.data])
 
     return (
         <>

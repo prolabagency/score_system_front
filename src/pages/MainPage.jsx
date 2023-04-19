@@ -6,6 +6,7 @@ import useGetData from "../hooks/useGetData";
 import {useSelector} from "react-redux";
 import TabOfPoints from "../components/report/TabOfPoints";
 import {MAIN} from "../utils/constance";
+import TableOfAveragePoint from "@/components/report/TableOfAveragePoint.jsx";
 
 const MainPage = () => {
 
@@ -17,38 +18,11 @@ const MainPage = () => {
 
     const auth = useSelector(state => state.auth)
 
-    const staff = useGetData({
-        url: `/api/v1/auth/users/${auth.user.id}/`,
-        headers: {
-            'Authorization': `Token ${auth.user.token}`
-        },
-        params: {}
-    })
-
-    const points = useGetData({
-        url: `/api/v1/points/`,
-        params: {
-            staff: auth.user.id,
-            page_size: 15,
-        },
-        headers: {
-            'Authorization': `Token ${auth.user.token}`
-        },
-        usePagination: true,
-    })
-
     return (
-        <>
-            { staff.isFetching
-                ?  <Loader />
-                :  <UserCard user={staff.data} className='mb-10' />
-            }
-
-            { points.isFetching
-                ? <Loader />
-                : <TabOfPoints useCurrentUserId={true} points={points} />
-            }
-        </>
+         <>
+             <UserCard user={auth.user} className='mb-10' />
+             <TableOfAveragePoint useCurrentUserId={true} />
+         </>
     );
 };
 

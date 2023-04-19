@@ -2,6 +2,7 @@ import React from 'react';
 import avatar from "../../assets/img/user.svg";
 import {Link} from "react-router-dom";
 import {getTitleOfRole} from "../../utils";
+import PointIndicator from "@/components/ui/PointIndicator.jsx";
 
 const UserListItem = ({className = '', user}) => {
     return (
@@ -24,7 +25,7 @@ const UserListItem = ({className = '', user}) => {
             </div>
             <div className='text-center lg:text-right'>
                 <span className='inline lg:hidden'><b>Средний балл:</b> <br/></span>
-                {user.average_point}
+                <PointIndicator isSatisfied={user.is_satisfied}>{user.points_sum}</PointIndicator>
             </div>
         </div>
     );
