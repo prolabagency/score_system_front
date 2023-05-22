@@ -41,6 +41,11 @@ const UsersListPage = () => {
         },
     })
 
+    useEffect(() => {
+        const {month, year} = users.params
+        averagePoint.setParams({month, year})
+    }, [users.params])
+
     return (
         <div>
             <h3 className='mb-5 text-center'>Баллы за {monthManager.getCurrentMonth()}</h3>
